@@ -1,8 +1,12 @@
 <?php
+require_once realpath(__DIR__."/vendor/autoload.php");
+use Dotenv\Dotenv;
 
+$dotenv = Dotenv::createImmutable(__DIR__);
+$result = $dotenv->load();
+$token = $result["TOKEN"];
 include 'telegram.php';
-
-$telegram = new Telegram('7408411800:AAE5VLE1mZB6_FQanpLvloOIRRfClsZFfB4');
+$telegram = new Telegram($token);
 $url = "https://e827f853-d663-44ef-9ae0-ac86e14ba08b-00-3exf2zyktmvj3.picard.replit.dev/index.php";
 $json_webhook_isset = $telegram->setWebhook($url);
 // result request body{}
